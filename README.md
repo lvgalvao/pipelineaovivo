@@ -4,26 +4,35 @@ Esse é o repositório da primeira parte da aula
 
 [![Jornada de Dados - Luciano Galvão Filho](https://img.youtube.com/vi/I-4noY9hGTQ/0.jpg)](https://www.youtube.com/watch?v=I-4noY9hGTQ)
 
-
-### **Índice**
-
-1. [Introdução](#introdução)
-2. [Tecnologias Utilizadas](#tecnologias-utilizadas)
-   - [Streamlit](#streamlit)
-   - [Pydantic](#pydantic)
-   - [Psycopg2](#psycopg2)
-   - [SQLAlchemy](#sqlalchemy) *(opcional)*
-   - [MkDocs](#mkdocs)
-3. [Estrutura do Projeto](#estrutura-do-projeto)
-   - [Divisão dos Módulos](#divisão-dos-módulos)
-4. [Passos para Configuração e Execução](#passos-para-configuração-e-execução)
-5. [Conclusão](#conclusão)
-
 ---
 
 ### **Introdução**
 
 O Sistema de CRM e Vendas da ZapFlow é uma aplicação desenvolvida para gerenciar e validar vendas de forma simples e eficiente. O sistema é composto por um frontend interativo desenvolvido com Streamlit, validação de dados com Pydantic, e integração com um banco de dados PostgreSQL usando Psycopg2.
+
+### **Sequence Diagram**
+
+O diagrama a seguir ilustra o fluxo de interação entre o usuário, o sistema web, a validação dos dados e o banco de dados.
+
+```mermaid
+sequenceDiagram
+    participant U as Usuário
+    participant SW as Sistema Web Streamlit
+    participant V as Validação Pydantic
+    participant DB as Banco de Dados SQLAlchemy
+    
+    U ->> SW: Inserir Dados
+    SW ->> V: Enviar Dados para Validação
+    alt Dados Válidos
+        V ->> DB: Inserir Dados no Banco de Dados
+        DB ->> SW: Confirmação de Armazenamento
+        SW ->> U: Dados Salvos com Sucesso
+    else Dados Inválidos
+        V ->> SW: Retornar Erros de Validação
+        SW ->> U: Exibir Mensagem de Erro
+    end
+```
+---
 
 ### **Tecnologias Utilizadas**
 
