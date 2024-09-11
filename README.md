@@ -1,6 +1,9 @@
 ### **README - Sistema de CRM e Vendas da ZapFlow**
 
----
+Esse é o repositório da primeira parte da aula
+
+[![Jornada de Dados - Luciano Galvão Filho](https://img.youtube.com/vi/I-4noY9hGTQ/0.jpg)](https://www.youtube.com/watch?v=I-4noY9hGTQ)
+
 
 ### **Índice**
 
