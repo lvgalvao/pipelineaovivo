@@ -2,6 +2,7 @@ import streamlit as st
 from contrato import Vendas
 from datetime import datetime, time
 from pydantic import ValidationError
+from database import salvar_no_postgres
 
 def main():
 
@@ -16,6 +17,7 @@ def main():
     if st.button("Salvar"):
         try:
             data_hora = datetime.combine(data, hora)
+            
             venda = Vendas(
                 email = email,
                 data = data_hora,
@@ -24,6 +26,7 @@ def main():
                 produto = produto
             )
             st.write(venda)
+            salvar_no_postgres(venda)
         except ValidationError as e:
             st.error(f"Deu erro {e}")
 
